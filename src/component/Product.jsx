@@ -17,15 +17,14 @@ const Product = () => {
     };
 
     useEffect(() => {
-        getProduct(id);
-    }, []); // eslint-disable-next-line react-hooks/exhaustive-deps
-
-    const getProduct = async () => {
-        setLoading(true);
-        const response = await fetch(`https://fakestoreapi.com/products/${id}`);
-        setProduct(await response.json());
-        setLoading(false);
-    };
+        const getProduct = async () => {
+            setLoading(true);
+            const response = await fetch(`https://fakestoreapi.com/products/${id}`);
+            setProduct(await response.json());
+            setLoading(false);
+        };
+        getProduct();
+    }, []);
 
     const Loading = () => {
         return (
